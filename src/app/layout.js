@@ -1,7 +1,11 @@
+import Navbar from '@/components/navbar/Navbar'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Roboto, Poppins } from 'next/font/google'
+import Footer from '@/components/footer/Footer'
+import { ThemeProvider } from '@/context/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({ subsets: ['greek'], weight: '300' })
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider>
+          <div className='container'>
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
